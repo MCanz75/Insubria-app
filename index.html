@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0755a5"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Insubria App">
+<link rel="manifest" href="./manifest.json"><link rel="stylesheet" href="./styles.css">
+<title>Insubria App</title>
+</head>
+<body>
+<div id="authScreen" class="auth-screen">
+  <div class="auth-card">
+    <img src="./assets/logo.png" class="auth-logo">
+    <h1>Insubria App</h1><div class="muted">Lions Club Varese Insubria</div>
+    <div id="authMessage" class="auth-message"></div>
+    <input id="authName" class="input" placeholder="Nome e cognome" autocomplete="name">
+    <input id="authEmail" class="input" placeholder="Email" type="email" autocomplete="email">
+    <input id="authPassword" class="input" placeholder="Password (almeno 6 caratteri)" type="password" autocomplete="current-password">
+    <button id="loginBtn" class="btn full">Accedi</button>
+    <button id="signupBtn" class="btn light full">Crea account</button>
+    <button id="resetBtn" class="linkbtn">Password dimenticata?</button>
+    <div class="auth-note">Accesso riservato ai soci del Club.</div>
+  </div>
+</div>
+
+<div id="appShell" class="app hidden">
+<header class="top"><img src="./assets/logo.png"><div><h1>Insubria App</h1><small>Lions Club Varese Insubria</small></div><button id="logoutBtn" class="iconbtn" title="Esci">↪</button></header>
+<main class="content">
+<section id="home" class="page active">
+  <div class="hero"><h2>Benvenuti nella Insubria App</h2><div class="muted">Il punto di incontro digitale del nostro Club.</div></div>
+  <div class="grid"><div class="card"><div class="stat" id="statMembers">0</div><div class="muted">Soci</div></div><div class="card"><div class="stat" id="statEvents">0</div><div class="muted">Eventi</div></div><div class="card"><div class="stat" id="statPosts">0</div><div class="muted">Messaggi</div></div></div>
+  <div class="card" style="margin-top:14px"><h3>Prossimi eventi</h3><div id="homeEvents" class="list"></div></div>
+</section>
+<section id="members" class="page"><div class="toolbar"><div><h2>Soci</h2><div class="muted">Elenco del Club</div></div><button id="newMemberBtn" class="btn admin-only">＋ Nuovo socio</button></div><div id="membersList" class="list"></div></section>
+<section id="events" class="page"><div class="toolbar"><div><h2>Eventi</h2><div class="muted">Appuntamenti e partecipazioni</div></div><button id="newEventBtn" class="btn admin-only">＋ Nuovo evento</button></div><div id="eventsList" class="list"></div></section>
+<section id="board" class="page"><div class="toolbar"><div><h2>Bacheca</h2><div class="muted">Comunicazioni del Club</div></div></div><div class="card"><textarea id="postText" class="textarea" placeholder="Scrivi un messaggio..."></textarea><button id="postBtn" class="btn" style="margin-top:8px">Pubblica</button></div><div id="postsList" class="list" style="margin-top:12px"></div></section>
+<section id="chat" class="page"><h2>Chat</h2><div class="muted">Conversazione del Club</div><div class="card" style="margin-top:12px"><div id="chatList" class="chatbox"></div><div style="display:flex;gap:8px;margin-top:8px"><input id="chatText" class="input" placeholder="Scrivi un messaggio..."><button id="chatBtn" class="btn">Invia</button></div></div></section>
+<section id="gallery" class="page"><div class="toolbar"><div><h2>Galleria</h2><div class="muted">Foto delle attività del Club</div></div><label class="btn yellow">＋ Foto<input id="photoInput" type="file" accept="image/*" multiple hidden></label></div><div id="galleryList" class="gallery"></div></section>
+<section id="documents" class="page"><div class="toolbar"><div><h2>Documenti</h2><div class="muted">Materiale condiviso</div></div><label class="btn yellow">＋ Documento<input id="docInput" type="file" accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx" multiple hidden></label></div><div id="docsList" class="list"></div></section>
+<section id="settings" class="page"><h2>Impostazioni</h2><div class="card"><h3>Il mio profilo</h3><div class="formgrid"><input id="profileName" class="input" placeholder="Nome e cognome"><input id="profileRole" class="input" placeholder="Ruolo"><input id="profilePhone" class="input" placeholder="Telefono"><input id="profileEmail" class="input" placeholder="Email" disabled></div><button id="saveProfileBtn" class="btn" style="margin-top:10px">Salva profilo</button></div><div class="card" style="margin-top:12px"><h3>Insubria App condivisa</h3><p class="muted">I dati sono salvati online e condivisi tra i soci autenticati.</p><p id="adminInfo" class="muted"></p></div></section>
+</main>
+<nav class="bottom"><button data-page="home"><span>⌂</span>Home</button><button data-page="members"><span>👥</span>Soci</button><button data-page="events"><span>📅</span>Eventi</button><button data-page="board"><span>📣</span>Bacheca</button><button data-page="chat"><span>💬</span>Chat</button><button data-page="gallery"><span>📷</span>Galleria</button><button data-page="documents"><span>📄</span>Documenti</button></nav>
+</div>
+<div id="modal" class="modal"><div class="sheet"><button class="close" id="closeModal">×</button><div id="modalContent"></div></div></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="./config.js"></script><script src="./app.js"></script>
+</body></html>
