@@ -1,36 +1,27 @@
+# Insubria App v2
 
-# Insubria App - PWA
+Versione corretta per GitHub Pages come **Project Site**:
+- tutti i percorsi sono relativi (`./`), quindi CSS, JavaScript, logo, manifest e service worker funzionano anche in `/nome-repository/`;
+- interfaccia responsive pensata per iPhone;
+- Home, Soci, Eventi, Bacheca, Chat, Galleria, Documenti e Impostazioni;
+- foto dei soci;
+- foto e documenti locali;
+- navigazione a sezioni/pagine.
 
-Questa è la Progressive Web App per il *Lions Club Varese Insubria*.
-Contenuti:
+## ATTENZIONE
+Questa è ancora una demo client-side: `localStorage` salva i dati sul singolo dispositivo/browser.
+Quindi i messaggi, soci, foto e documenti NON vengono condivisi automaticamente tra i 30 soci.
+
+Per una vera app del club servirà un database online e autenticazione (ad esempio Supabase/Firebase). La struttura grafica è già pronta per fare questo passaggio.
+
+## Pubblicazione
+Sostituisci i file della vecchia versione nel repository GitHub mantenendo:
 - index.html
-- styles.css
 - app.js
+- styles.css
 - manifest.json
 - service-worker.js
-- icons/icon-192.png, icons/icon-512.png
+- assets/logo.jpg
+- icons/
 
-## Funzionalità
-- Membri: aggiungi, modifica, elimina
-- Eventi: crea, modifica, RSVP
-- Bacheca (post)
-- Chat locale tra soci (non sincronizzata)
-- Galleria: upload immagini (salvate in localStorage)
-- Documenti: upload file (salvati in localStorage)
-
-## Local deployment (test in locale)
-1. Apri `index.html` nel browser (meglio usare un piccolo server per evitare problemi con service worker).
-2. Per avviare velocemente un server locale (Python 3):
-   - `python3 -m http.server 8000`
-   - poi apri `http://localhost:8000` nel browser.
-
-## Pubblicare su GitHub Pages
-1. Crea un nuovo repository su GitHub.
-2. Carica il contenuto della cartella `InsubriaApp_PWA` nella root del repository.
-3. Vai su Settings → Pages → scegli branch `main` e cartella `/ (root)`, salva.
-4. Dopo qualche minuto la tua app sarà disponibile su `https://<tuo-username>.github.io/<repo>/`
-5. Apri il link su iPhone Safari e seleziona **Condividi → Aggiungi a Home** per avere l'icona come app.
-
-## Note importanti
-- Questa versione è completamente client-side (i dati vivono in `localStorage` del browser).
-- Se desideri sincronizzazione multi-utente, login e storage centralizzato, posso aiutarti ad aggiungere Firebase o Supabase.
+Poi fai Commit changes. GitHub Pages pubblicherà la modifica dal branch configurato.
