@@ -33,7 +33,3 @@ Le tabelle sono protette con Postgres Row Level Security. I bucket Storage sono 
 
 ## Nota sul piano gratuito
 Supabase offre un piano Free. I limiti possono cambiare nel tempo: controllare sempre la pagina Pricing prima di un uso intensivo.
-
-
-## Logo v5
-Il logo principale è incorporato direttamente nell'HTML come immagine inline, così non dipende dal percorso /assets/ e non può rompersi per un problema di GitHub Pages o cache.

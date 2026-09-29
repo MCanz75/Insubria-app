@@ -139,3 +139,33 @@ alter publication supabase_realtime add table public.documents;
 
 -- DOPO aver creato il primo account, promuovilo ad amministratore sostituendo l'email:
 -- update public.profiles set role='Presidente' where email='tuamail@example.com';
+
+-- V5: sicurezza ruoli. Solo un amministratore può cambiare il campo role.
+create or replace function public.prevent_non_admin_role_change()
+returns trigger
+language plpgsql
+security definer
+set search_path = public
+as $$
+begin
+  if new.role is distinct from old.role and not public.is_admin(auth.uid()) then
+    raise exception 'Solo un amministratore può modificare il ruolo di un socio';
+  end if;
+  if new.role is null or trim(new.role) = '' then
+    new.role := 'Socio';
+  end if;
+  if new.role not in ('Socio','Amministratore','Segretario','Presidente') then
+    raise exception 'Ruolo non valido';
+  end if;
+  return new;
+end;
+$$;
+
+drop trigger if exists trg_profiles_role_security on public.profiles;
+create trigger trg_profiles_role_security
+before update on public.profiles
+for each row execute function public.prevent_non_admin_role_change();
+
+-- Mantiene Socio come ruolo predefinito per i nuovi profili.
+alter table public.profiles alter column role set default 'Socio';
+update public.profiles set role='Socio' where role is null or trim(role)='';
