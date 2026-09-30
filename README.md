@@ -33,3 +33,7 @@ Le tabelle sono protette con Postgres Row Level Security. I bucket Storage sono 
 
 ## Nota sul piano gratuito
 Supabase offre un piano Free. I limiti possono cambiare nel tempo: controllare sempre la pagina Pricing prima di un uso intensivo.
+
+
+## v9 logo fix
+Use club-logo-v9.png for the club logo, icon-180-v9.png/icon-192-v9.png/icon-512-v9.png for the app icon. Replace the old frontend files in GitHub; do not rerun Supabase SQL.
